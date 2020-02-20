@@ -25,24 +25,38 @@ const App = () => {
 
   const removeFeature = item => {
     // dispatch an action here to remove an item
+    props.removeFeature(item);
   };
 
   const buyItem = item => {
     // dipsatch an action here to add an item
+    props.addFeature(item);
   };
 
   return (
     <div className="boxes">
       <div className="box">
-        <Header car={state.car} />
-        <AddedFeatures car={state.car} />
+      <Header car={props.car} />
+        <AddedFeatures car={props.car} removeFeature={removeFeature} />
       </div>
       <div className="box">
-        <AdditionalFeatures additionalFeatures={state.additionalFeatures} />
-        <Total car={state.car} additionalPrice={state.additionalPrice} />
+        {console.log(props.additionalFeatures)}
+        <AdditionalFeatures additionalFeatures={props.additionalFeatures} addFeature={buyItem} />
+        <Total car={props.car} additionalPrice={props.additionalPrice} />
       </div>
     </div>
   );
 };
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    additionalPrice: state.additionalPrice,
+    car: state.car,
+    additionalFeatures: state.additionalFeatures
+  }
+}
+
+export default connect(
+mapStateToProps,
+{ addFeature,removeFeature}
+)(App);

@@ -4,12 +4,12 @@ import App from './App';
 
 import { createStore } from "redux";
 import { Provider } from "react-redux";
-import { listReducer } from "../src/reducers/reducer";
+import { reducer } from "../src/reducers/reducer";
 
 import 'bulma/css/bulma.css';
 import './styles.scss';
 
-const store = createStore(listReducer);
+const store = createStore(reducer);
 // console.log(store); displays obj with 4 
 
 const rootElement = document.getElementById('root');
