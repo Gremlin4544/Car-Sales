@@ -5,7 +5,11 @@ import AddedFeatures from './components/AddedFeatures';
 import AdditionalFeatures from './components/AdditionalFeatures';
 import Total from './components/Total';
 
-const App = () => {
+import {connect} from 'react-redux';
+import {addFeature, removeFeature} from '../src/actions/action';
+
+
+const App = (props) => {
   const state = {
     additionalPrice: 0,
     car: {
